@@ -1,13 +1,16 @@
 const express = require('express');
+const fs = require("fs").promises;
+const path = require("path");
+
+const gamesRouter = require('./routes/games'); 
+const mainRouter = require('./routes/main');
 
 const app = express();
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-  console.log(1);
-  res.send({ foo: 'booo' });
-});
+app.use(mainRouter, gamesRouter);
 
 app.listen(PORT, () => {
   console.log(`Приложение запущено тут: http://localhost:${PORT}`);
