@@ -1,12 +1,12 @@
 const express = require('express');
-const fs = require("fs").promises;
+const cors = require('cors');
 const path = require("path");
 
 const gamesRouter = require('./routes/games'); 
 const mainRouter = require('./routes/main');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'public')), express.json()); 
+app.use(express.static(path.join(__dirname, 'public')), express.json(), cors()); 
 
 const PORT = 3000;
 
