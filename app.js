@@ -6,7 +6,7 @@ const gamesRouter = require('./routes/games');
 const mainRouter = require('./routes/main');
 
 const app = express();
-app.use(express.static(path.join(__dirname, 'public'))); 
+app.use(express.static(path.join(__dirname, 'public')), express.json()); 
 
 const PORT = 3000;
 
